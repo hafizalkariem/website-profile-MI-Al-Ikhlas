@@ -4,17 +4,19 @@
   --color-primary: #3a4d39;
   --color-secondary: #29973f;
   --color-white: #ffffff;
+  --color-third: #42d680;
 }
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 body {
-  min-height: 4000px;
+  min-height: 6000px;
   font-family: "inika", sans-serif;
-  scroll-behavior: smooth;
 }
 
 #navbar {
@@ -83,8 +85,8 @@ body {
   color: #29973f;
 }
 .navbar .navLink ul li.dropdown {
-  overflow: hidden;
-  float: left;
+  position: relative;
+  display: inline-block;
 }
 .navbar .navLink ul li.dropdown:hover {
   color: var(--color-secondary);
@@ -93,14 +95,13 @@ body {
 .navbar .navLink ul li.dropdown .dropdown-content {
   display: none;
   position: absolute;
-  top: 2.5rem;
-  left: 17rem;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 5px;
+  z-index: 1;
 }
 .navbar .navLink ul li.dropdown .dropdown-content a:hover {
   padding-left: 1.5rem;
@@ -154,9 +155,11 @@ body {
   border: solid 1px var(--color-secondary);
   border-radius: 50px;
   background-color: var(--color-white);
+  overflow: hidden;
   /* clip-path: circle(0%);
   transition: clip-path 2.5s cubic-bezier(0.25, 1, 0.3, 1); */
 }
+
 .container-hero .content button:hover {
   background-color: var(--color-secondary);
   color: var(--color-white);
@@ -164,15 +167,350 @@ body {
 }
 
 .container-hero .image img {
-  position: relative;
+  position: absolute;
   flex: 0 0 40%;
   z-index: 2;
+  overflow: hidden;
 }
 .container-hero .image img:nth-child(2) {
-  position: absolute;
-  top: 13rem;
-  right: 16rem;
+  position: relative;
+  /* top: 13rem;
+  right: 16rem; */
   z-index: 1;
 }
 
 /* about */
+#about {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-image: url(img/about-background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -999;
+}
+.container-about {
+  margin: 12rem 12rem 12rem;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 5rem;
+}
+
+.container-about .logo {
+  display: flex;
+  flex: 0 0 30%;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem auto 1rem;
+}
+.container-about .text-about {
+  display: flex;
+  flex: 0 0 40%;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+}
+.container-about .text-about h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  margin-bottom: 2rem;
+}
+.container-about .text-about p {
+  font-size: 1.5rem;
+  font-family: 900;
+  color: var(--color-primary);
+  text-align: center;
+  line-height: 2.5rem;
+  padding: 0 5rem;
+  margin-bottom: 2rem;
+}
+.container-about .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem auto;
+}
+
+.container-about .btn button {
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  position: relative;
+  font-size: 20px;
+  border: 2px solid var(--color-secondary);
+  border-radius: 25px;
+  color: var(--color-secondary);
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.8s ease-in-out;
+}
+
+.container-about .btn button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.8s ease-in-out;
+  z-index: -1;
+  clip-path: circle(0%);
+}
+
+.container-about .btn button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  clip-path: circle(150% at bottom);
+}
+
+.container-about .btn button:hover {
+  color: white;
+}
+
+@keyframes circle-in-bottom {
+  from {
+    clip-path: circle(0%);
+  }
+  to {
+    clip-path: circle(150% at bottom);
+  }
+}
+
+[transition-style="in:circle:bottom-left"] {
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-bottom both;
+}
+@keyframes circle-out-bottom-left {
+  from {
+    clip-path: circle(125%);
+  }
+  to {
+    clip-path: circle(0% at bottom left);
+  }
+}
+
+[transition-style="out:circle:bottom-left"] {
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-out-bottom-left both;
+}
+
+/* visi-misi */
+#visiMisi {
+  height: 100vh;
+  background-color: var(--color-third);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -999;
+}
+.container-visiMisi {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 6rem 6rem 6rem;
+  gap: 5rem;
+}
+.container-visiMisi .vector {
+  display: flex;
+  margin-top: 3rem;
+  justify-content: center;
+  position: relative;
+  flex: 0 0 50%;
+}
+.container-visiMisi .vector .image1 {
+  position: absolute;
+}
+.container-visiMisi .vector .image2 {
+  position: absolute;
+  top: -0.75rem;
+  left: 7.5rem;
+}
+.container-visiMisi .vector .image2 img {
+  position: relative;
+}
+.container-visiMisi .vector .image2 .text {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+.container-visiMisi .vector .image2 .text h1 {
+  font-size: 3.5rem;
+  color: var(--color-third);
+  text-align: center;
+}
+.container-visiMisi .vector .image2 .text h5 {
+  font-size: 0.75rem;
+  color: #caa004;
+  text-align: center;
+}
+.container-visiMisi .visi-misi {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+  flex: 0 0 50%;
+}
+.container-visiMisi .visi-misi .vision {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 1rem 1rem;
+}
+.container-visiMisi .visi-misi .vision h1 {
+  color: var(--color-white);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.container-visiMisi .visi-misi .vision p {
+  color: var(--color-white);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.container-visiMisi .visi-misi .mision {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 1rem 1rem;
+}
+
+.container-visiMisi .visi-misi .mision h1 {
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.container-visiMisi .visi-misi .mision .mision-text {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  margin: 1rem 1rem;
+}
+.container-visiMisi .visi-misi .mision .mision-text img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.container-visiMisi .visi-misi .mision .mision-text p {
+  text-wrap: wrap;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  line-height: 1.5;
+}
+
+/* schoold commite */
+#school-commite {
+  height: 130vh;
+  background-image: url(img/about-background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -999;
+}
+.container-school-commite {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 6rem 6rem 6rem;
+  gap: 5rem;
+}
+.container-school-commite .title {
+  display: block;
+  padding: 2rem;
+}
+.container-school-commite .title h1 {
+  color: var(--color-primary);
+  font-size: 3rem;
+  text-align: center;
+  line-height: 1.5;
+  padding: 5px;
+  text-decoration: underline 5px solid #000000;
+  text-underline-offset: 10px;
+}
+
+.container-school-commite .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.container-school-commite .card .card-view {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  width: 400px;
+  height: 420px;
+  background-color: white;
+  box-shadow: 5px 5px 10px #5f5c5c;
+  position: relative;
+}
+.container-school-commite .card .card-view img {
+  display: block;
+  width: 80%;
+  height: auto;
+  position: absolute;
+  top: 1.5rem;
+  z-index: 2;
+  transition: transform 0.5s ease-in-out;
+}
+.container-school-commite .card .card-view .commite {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
+}
+.container-school-commite .card .card-view .commite h1 {
+  font-size: 2.5rem;
+  color: #000000;
+  font-weight: 500;
+  text-align: center;
+}
+.container-school-commite .card .card-view .commite p {
+  font-size: 1.25rem;
+  color: #000000;
+  text-align: center;
+}
+.container-school-commite .card .card-view .commite::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(202, 201, 201, 0.5);
+  backdrop-filter: blur(10px);
+  left: 0;
+  right: 0;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.5s ease-in-out;
+}
+.container-school-commite .card .card-view:hover img {
+  transform: scale(0.8) translateY(-2rem);
+}
+.container-school-commite .card .card-view:hover .commite::before {
+  clip-path: inset(100% 0 0 0);
+}
+
+@keyframes wipe-out-down {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+[transition-style="out:wipe:down"] {
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-out-down both;
+}
+
+/* student info */
