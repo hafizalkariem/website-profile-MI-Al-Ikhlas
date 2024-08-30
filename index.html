@@ -33,14 +33,14 @@
             <li><a href="#hero">Beranda</a></li>
             <li><a href="#about">Tentang</a></li>
             <li class="dropdown">
-              <a href="">Info <i class="fas fa-chevron-up fa-sm"></i></a>
+              <a href="#">Info <i class="fas fa-chevron-up fa-sm"></i></a>
               <div class="dropdown-content">
                 <a href="#visiMisi">Visi - Misi</a>
                 <a href="#school-commite">Komite Sekolah</a>
                 <a href="#student-info">Kegiatan Sekolah</a>
               </div>
             </li>
-            <li><a href="">Kontak</a></li>
+            <li><a href="#contact-us">Kontak</a></li>
           </ul>
         </div>
       </div>
@@ -292,47 +292,76 @@
             </div>
             <div class="text">
               <p>
-                potret kegiatan sholat dluha berjamaah yang dbertujuan untuk ..
+                potret kegiatan sholat dluha berjamaah yang dbertujuan untuk
+                menambah ketaqwaan ashiap
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- footer -->
-    <section id="footer"></section>
     <!-- contact-us -->
-    <section id="contact-us"></section>
-    <script>
-      // Select dropdown elements
-      const dropdown = document.querySelector(".dropdown");
-      const dropdownContent = document.querySelector(".dropdown-content");
-      const dropdownIcon = document.querySelector(".dropdown i");
-
-      // Toggle dropdown content and icon rotation on click (only for the dropdown button)
-      dropdown.addEventListener("click", function (event) {
-        // Prevent toggling if an internal link is clicked
-        if (
-          event.target.tagName === "A" &&
-          event.target.getAttribute("href").startsWith("#")
-        ) {
-          return;
-        }
-
-        event.preventDefault();
-        dropdown.classList.toggle("open");
-        dropdownContent.style.display = dropdown.classList.contains("open")
-          ? "block"
-          : "none";
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener("click", function (event) {
-        if (!dropdown.contains(event.target)) {
-          dropdown.classList.remove("open");
-          dropdownContent.style.display = "none";
-        }
-      });
-    </script>
+    <section id="contact-us">
+      <div class="container-contact-us">
+        <div class="text">
+          <img src="img/Sticky notes.png" alt="sticky-notes" />
+          <p>Need Further Information?</p>
+          <p>Don'n hesitate to contact us</p>
+        </div>
+        <div class="btn"><a href="">contact us</a></div>
+      </div>
+    </section>
+    <!-- footer -->
+    <footer id="footer">
+      <div class="container-footer">
+        <div class="top">
+          <div class="social-media">
+            <h5>Social Media.</h5>
+            <div class="icon">
+              <a href=""><i class="fa-brands fa-google fa-2xl"></i></a
+              ><a href=""><i class="fa-brands fa-instagram fa-2xl"></i></a
+              ><a href=""><i class="fa-brands fa-facebook fa-2xl"></i></a
+              ><a href=""><i class="fa-brands fa-tiktok fa-2xl"></i></a>
+            </div>
+          </div>
+          <div class="alternatif-links">
+            <div class="beranda">
+              <h1>Beranda</h1>
+              <a href="#hero">beranda.</a>
+            </div>
+            <div class="about">
+              <h1>Tentang</h1>
+              <a href="#about">Tentang Kami.</a>
+            </div>
+            <div class="informasi">
+              <h1>Informasi</h1>
+              <a href="#visiMisi">Visi-Misi.</a>
+              <a href="#school-commite">komite sekolah.</a>
+              <a href="#student-info">kegiatan sekolah.</a>
+            </div>
+            <div class="kontak">
+              <h1>Kontak</h1>
+              <a href="#contact-us">Kontak Kami.</a>
+            </div>
+          </div>
+        </div>
+        <div class="text-footer">
+          <p>Madarasah Ibtidaiyyah</p>
+          <p>Al-Ikhlas</p>
+        </div>
+        <div class="down">
+          <div class="copyright">
+            <p>&copy;2024 MI Al-Ikhlas</p>
+          </div>
+          <div class="social-media-links">
+            <a href=""><i class="fa-brands fa-google fa-lg"></i></a
+            ><a href=""><i class="fa-brands fa-instagram fa-lg"></i></a
+            ><a href=""><i class="fa-brands fa-facebook fa-lg"></i></a
+            ><a href=""><i class="fa-brands fa-tiktok fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>
